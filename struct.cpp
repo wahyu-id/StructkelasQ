@@ -14,7 +14,7 @@ void dMenu()
   cout << "2. Menu baca" << "\n";
   cout << "3. Menu ubah" << "\n";
   cout << "4. Menu hapus" << "\n";
-  cout << "5. Informasi" << "\n";
+  cout << "5. Keluar" << "\n";
   cout << "Masukan angka :";
 }
 
@@ -77,7 +77,7 @@ void perbaikanData(int p)
   cout << "masukan ipk: ";
   cin >> sikc[p].ipk;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
-  cout << "Data berhasil diubah:\n";
+  cout << "Data berhasil diubah!\n";
 }
 
 void ubahPilih()
@@ -86,6 +86,18 @@ void ubahPilih()
   cin >> u;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   perbaikanData(u);
+  getch();
+}
+
+void hapusData(){
+  cout << "Masukkan data yang ingin dihapus: ";
+  cin >> x;
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  for (int i = x; i < pos; i++){
+    sikc[i] = sikc[i + 1];
+  }
+    pos--;
+    cout << "Data berhasil dihapus!\n";
 }
 
 int main()
@@ -108,9 +120,11 @@ int main()
     case '3':
       tampilkanData();
       ubahPilih();
-      getch();
       break;
     case '4':
+      tampilkanData();
+      hapusData();
+      getch();
       break;
     case '5':
 

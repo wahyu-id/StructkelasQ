@@ -35,9 +35,9 @@ void tampilkanData()
   cout << "Data yang telah dimasukkan" << endl;
   for (int i = 0; i <= pos; i++)
   {
-    cout << "Data ke-" << i + 1 << ":\n";
-    cout << "NIM    : " << sikc[i].nim << ":\n" ;
-    cout << "Nama   : " << sikc[i].nama << ":\n" ;
+    cout << "Data ke-" << i << ":\n";
+    cout << "NIM    : " << sikc[i].nim << ":\n";
+    cout << "Nama   : " << sikc[i].nama << ":\n";
     cout << "Alamat : " << sikc[i].alamat << ":\n";
     cout << "IPK    : " << sikc[i].ipk << "\n\n";
   }
@@ -77,6 +77,15 @@ void perbaikanData(int p)
   cout << "masukan ipk: ";
   cin >> sikc[p].ipk;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  cout << "Data berhasil diubah:\n";
+}
+
+void ubahPilih()
+{
+  cout << "Masukkan data yang ingin diubah: ";
+  cin >> u;
+  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  perbaikanData(u);
 }
 
 int main()
@@ -97,6 +106,9 @@ int main()
       getch();
       break;
     case '3':
+      tampilkanData();
+      ubahPilih();
+      getch();
       break;
     case '4':
       break;

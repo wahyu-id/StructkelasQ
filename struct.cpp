@@ -29,15 +29,18 @@ struct mahasiswa
 mahasiswa sikc[30];
 int pos = -1;
 
-void tampilkanData(int p)
+void tampilkanData()
 {
   system("cls");
-  fflush(stdin);
-  for (int i = 0; i < p; i++)
+  cout << "Data yang telah dimasukkan" << endl;
+  for (int i = 0; i <= pos; i++)
   {
-    cout << sikc[p].nim << " , " << sikc[p].nama << " , " << sikc[p].alamat << " , " << sikc[p].ipk << endl;
+    cout << "Data ke-" << i + 1 << ":\n";
+    cout << "NIM    : " << sikc[i].nim << ":\n" ;
+    cout << "Nama   : " << sikc[i].nama << ":\n" ;
+    cout << "Alamat : " << sikc[i].alamat << ":\n";
+    cout << "IPK    : " << sikc[i].ipk << "\n\n";
   }
-  getch();
 }
 
 void masukanData()
@@ -50,7 +53,7 @@ void masukanData()
   {
     pos++;
     system("cls");
-    cout << "masukan data ke-" << i + 1 << ":/n";
+    cout << "masukan data ke-" << i + 1 << ":\n";
     cout << "masukan nim: ";
     getline(cin, sikc[pos].nim);
     cout << "masukan nama: ";
@@ -90,7 +93,8 @@ int main()
       masukanData();
       break;
     case '2':
-      tampilkanData(pos);
+      tampilkanData();
+      getch();
       break;
     case '3':
       break;

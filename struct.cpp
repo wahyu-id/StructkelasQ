@@ -4,7 +4,6 @@
 using namespace std;
 int n;
 int u;
-int x;
 
 void dMenu()
 {
@@ -32,14 +31,14 @@ int pos = -1;
 void tampilkanData()
 {
   system("cls");
-  cout << "Data yang telah dimasukkan" << endl;
+  cout << "Data yang telah dimasukkan\n"
+       << endl;
   for (int i = 0; i <= pos; i++)
   {
-    cout << "Data ke-" << i << ":\n";
-    cout << "NIM    : " << sikc[i].nim << ":\n";
-    cout << "Nama   : " << sikc[i].nama << ":\n";
-    cout << "Alamat : " << sikc[i].alamat << ":\n";
-    cout << "IPK    : " << sikc[i].ipk << "\n\n";
+    cout << (i + 1) << ".\tNIM    : " << sikc[i].nim << "\n";
+    cout << "\tNama   : " << sikc[i].nama << "\n";
+    cout << "\tAlamat : " << sikc[i].alamat << "\n";
+    cout << "\tIPK    : " << sikc[i].ipk << "\n\n";
   }
 }
 
@@ -48,33 +47,35 @@ void masukanData()
   system("cls");
   cout << "Masukkan jumlah data:";
   cin >> n;
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
+  cin.ignore();
   for (int i = 0; i < n; i++)
   {
     pos++;
     system("cls");
-    cout << "masukan data ke-" << i + 1 << ":\n";
-    cout << "masukan nim: ";
+    cout << "Masukan data ke-" << (pos + 1) << ":" << endl;
+    cout << "Masukan NIM: ";
     getline(cin, sikc[pos].nim);
-    cout << "masukan nama: ";
+    cout << "Masukan Nama: ";
     getline(cin, sikc[pos].nama);
-    cout << "masukan alamat: ";
+    cout << "Masukan Alamat: ";
     getline(cin, sikc[pos].alamat);
-    cout << "masukan ipk: ";
+    cout << "Masukan IPK: ";
     cin >> sikc[pos].ipk;
     cin.ignore(numeric_limits<streamsize>::max(), '\n');
+    cin.get();
   }
 }
 
 void perbaikanData(int p)
 {
   system("cls");
-  fflush(stdin);
-  cout << "masukan nama: ";
+  cout << "Mengubah data ke-" << (p + 1) << ":\n";
+  cin.ignore();
+  cout << "Masukan Nama baru: ";
   getline(cin, sikc[p].nama);
-  cout << "masukan alamat: ";
+  cout << "Masukan Alamat baru: ";
   getline(cin, sikc[p].alamat);
-  cout << "masukan ipk: ";
+  cout << "Masukan IPK baru: ";
   cin >> sikc[p].ipk;
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
   cout << "Data berhasil diubah!\n";
@@ -82,22 +83,22 @@ void perbaikanData(int p)
 
 void ubahPilih()
 {
+  system("cls");
   cout << "Masukkan data yang ingin diubah: ";
   cin >> u;
-  cin.ignore(numeric_limits<streamsize>::max(), '\n');
-  perbaikanData(u);
-  getch();
+  perbaikanData(u - 1);
 }
 
-void hapusData(){
-  cout << "Masukkan data yang ingin dihapus: ";
-  cin >> x;
+void hapusData(int p)
+{
+  system("cls");
   cin.ignore(numeric_limits<streamsize>::max(), '\n');
-  for (int i = x; i < pos; i++){
+  for (int i = p; i < pos; i++)
+  {
     sikc[i] = sikc[i + 1];
   }
-    pos--;
-    cout << "Data berhasil dihapus!\n";
+  pos--;
+  cout << "Data berhasil dihapus!\n";
 }
 
 int main()
@@ -118,16 +119,16 @@ int main()
       getch();
       break;
     case '3':
-      tampilkanData();
       ubahPilih();
       break;
     case '4':
-      tampilkanData();
-      hapusData();
-      getch();
+      int x;
+      system("cls");
+      cout << "Masukkan data yang ingin dihapus: ";
+      cin >> x;
+      hapusData(x - 1);
       break;
     case '5':
-
       break;
     default:
       system("cls");
